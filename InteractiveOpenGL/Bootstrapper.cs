@@ -1,14 +1,15 @@
-﻿using Prism.Mef;
-using System.Windows;
+﻿using System.Windows;
 using InteractiveOpenGL.Views;
+using Microsoft.Practices.ServiceLocation;
+using Prism.Autofac;
 
 namespace InteractiveOpenGL
 {
-	class Bootstrapper : MefBootstrapper
+	class Bootstrapper : AutofacBootstrapper
 	{
 		protected override DependencyObject CreateShell()
 		{
-			return new Shell();
+			return ServiceLocator.Current.GetInstance<Shell>();
 		}
 
 		protected override void InitializeShell()
